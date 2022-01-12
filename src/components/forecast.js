@@ -6,14 +6,15 @@ import Sunny from './icons/sunny';
 import Rainy from './icons/rainy';
 import axios from 'axios';
 
+
 const Forecast = () => {
   	const [climate,getClimate] = useState();
 	// const [city,setCity] = useState("Chennai"); 
 
 	const weather ={
 		Sunny:<Sunny />,
-		cloud: <Cloud />,
-		rainy: <Rainy />
+		Cloud: <Cloud />,
+		Rainy: <Rainy />
 	}
 
 	useEffect(() => {
@@ -37,7 +38,8 @@ const Forecast = () => {
 				{/* <input type="name" onSubmit={() => setCity}/> */}
   	        </div>
   	        {/* {weatherShow} */}
-			<img src={climate?.forecast?.forecastday[0]?.day?.condition?.icon} alt='' className='w-100 spin' />
+			{/* <img src={climate?.forecast?.forecastday[0]?.day?.condition?.icon} alt='' className='w-100 spin' /> */}
+			{climate?.forecast?.forecastday[0]?.day?.condition?.text === "Sunny" ? <Rainy /> : weather.Cloud}
   	    </div>
   	)
 }
